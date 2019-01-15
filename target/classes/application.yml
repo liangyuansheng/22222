@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: lys112233
+  jpa:
+      hibernate:
+        ddl-auto: none
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
