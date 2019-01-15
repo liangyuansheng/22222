@@ -92,5 +92,15 @@ public class GirlController {
 
          girlService.insertTwo();
     }
+    /*
+     * girlFindByAge
+     */
+    @GetMapping(value = "/girls/getAge/{id}")
+    public void getAge(@PathVariable(value = "id") Integer id) throws Exception{
+
+        girlService.getAge(id);
+    }
+
+
 
 }
