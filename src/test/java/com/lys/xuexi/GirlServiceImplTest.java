@@ -1,7 +1,7 @@
 package com.lys.xuexi;
 
 import com.lys.xuexi.domain.Girl;
-import com.lys.xuexi.service.GirlService;
+import com.lys.xuexi.service.GirlServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,12 +11,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GirlServiceTest {
+public class GirlServiceImplTest {
     @Autowired
-    private GirlService girlService;
+    private GirlServiceImpl girlServiceImpl;
     @Test
     public void findoneTest(){
-       Girl girl= girlService.findone(1);
+       Girl girl= girlServiceImpl.findone(1);
         Assert.assertEquals(new Integer(9),girl.getAge());
     }
 }

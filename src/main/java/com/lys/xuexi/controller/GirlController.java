@@ -6,16 +6,16 @@ import com.lys.xuexi.domain.Girl;
 import com.lys.xuexi.domain.Result;
 import com.lys.xuexi.repository.GirlRepository;
 import com.lys.xuexi.service.GirlService;
+import com.lys.xuexi.service.GirlServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class GirlController {
@@ -29,10 +29,23 @@ public class GirlController {
     /**
      * all
      */
-    @GetMapping(value = "/girls")
+  /*  @GetMapping(value = "/girls")
     public List<Girl> girlList() {
         logger.info("girlList");
         return girlRepository.findAll();
+    }*/
+    // 分页显示数据
+    @GetMapping("/girls")
+    public Page<Girl> showPage(@RequestParam(value = "page") Integer page, @RequestParam(value = "size") Integer size){
+        logger.info("分页： page:"+page+"; size:"+size);
+        return girlService.getPage(page, size);
+    }
+
+    // 排序分页显示数据
+    @GetMapping("/girls_sort")
+    public Page<Girl> showSortPage(@RequestParam(value = "page") Integer page, @RequestParam(value = "size") Integer size){
+        System.out.println("排序分页： page:"+page+"; size:"+size);
+        return girlService.getPageSort(page, size);
     }
 
     /**
@@ -90,7 +103,7 @@ public class GirlController {
     @GetMapping(value = "/girls/two/")
     public void insertTwo(){
 
-         girlService.insertTwo();
+        girlService.insertTwo();
     }
     /*
      * girlFindByAge
